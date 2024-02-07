@@ -3,7 +3,7 @@
 // const cors = require('cors')
 // require('dotenv').config();
 
-// const port = process.env.PORT 
+// const port = process.env.PORT
 
 // app.use(cors());
 
@@ -29,29 +29,26 @@
 //     }
 // }
 // start();
-const express = require('express');
+const express = require("express");
 const app = express();
-const cors = require('cors');
-require('dotenv').config();
-
+const cors = require("cors");
+require("dotenv").config();
 const port = process.env.PORT;
-
 app.use(cors());
-
 const dbConnection = require("./config/dbConfig");
 
+//Set up the listener - Creating the webserver
+app.listen(port, () => {
+  console.log(`Server is listening on port ${port}`);
+});
 
-
-// app.listen(port, () => {
-//     console.log(`Server is listening on port ${port}`);
-    
-// });
+//Create the connection to the database
 async function connectToDatabase() {
-    try {
-      await dbConnection.getConnection();
-      console.log('Connected to the database!');
-    } catch (err) {
-      console.error('Error connecting to the database:', err);
-    }
+  try {
+    await dbConnection.getConnection();
+    console.log("Connected to the database!");
+  } catch (err) {
+    console.error("Error connecting to the database:", err);
   }
+}
 connectToDatabase();
