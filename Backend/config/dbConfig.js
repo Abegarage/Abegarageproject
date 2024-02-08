@@ -18,3 +18,4 @@ async function query(sql, params) {
 }
 // Export the query function for use in the application 
 module.exports = { query };
+
