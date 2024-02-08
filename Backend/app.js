@@ -1,13 +1,16 @@
 
 
 const express = require('express');
+
+//create the web server
 const app = express();
-const cors = require('cors');
+
+//import the config file
 require('dotenv').config();
+
 //import environment variables from .env file
 const port = process.env.PORT;
 
-app.use(cors());
 //import the dbConfig file
 const dbConnection = require("./config/dbConfig");
 
@@ -28,4 +31,5 @@ app.listen(port, () => {
 
 });
 
+module.exports = app;
 
