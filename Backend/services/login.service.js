@@ -6,12 +6,14 @@ const bcrypt = require("bcrypt");
 const employeeService = require("./employee.service");
 // Handle employee login
 async function logIn(employeeData) {
+  console.log(employeeData, "employee");
   try {
     let returnData = {}; //object to be returned
     const employee = await employeeService.getEmployeeByEmail(
-      employeeData.email,
-      employee_email
+      employeeData.employee_email
+      // employee_email
     );
+  console.log(employee);
     if (employee.length === 0) {
       returnData = {
         status: "fail",
@@ -21,7 +23,7 @@ async function logIn(employeeData) {
     }
     const passwordMatch = await bcrypt.compare(
       employeeData.employee_password,
-      employee[0].employee_password_hash
+      employee[0].employee_password_hashed
     );
     if (!passwordMatch) {
       returnData = {

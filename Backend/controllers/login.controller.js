@@ -3,13 +3,17 @@ const loginService = require("../services/login.service");
 //Import the jsonwebtoken module
 const jwt = require("jsonwebtoken");
 // Import the secret key from the environment variables
-const jwt = process.env.JWT_SECRET;
+const jwtsecret = process.env.JWT_SECRET;
 
 //Handle employee login
 async function logIn(req, res, next) {
   try {
     console.log(req.body);
-    const employeeData = await loginService.logIn(employeeData);
+    
+    const employeeData = req.body;
+    // Call the logIn method from the login service 
+    const employee = await loginService.logIn(employeeData);
+    console.log(employee);
     //If employee is not found
     if (employeeData.status === "fail") {
       res.status(403).json({
@@ -39,3 +43,4 @@ async function logIn(req, res, next) {
     });
   } catch (error) {}
 }
+module.exports = { logIn }

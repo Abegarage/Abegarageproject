@@ -1,0 +1,75 @@
+import React from 'react'
+
+function LoginForm() {
+  return (
+    <div> <section class="login-section">
+    <div class="auto-container">
+        <div class="row clearfix">
+            <div class="column col-lg-6 col-md-6 col-sm-12">
+                
+                <div class="login-form">
+                    <h2>Login to your account</h2>
+                
+                    <form method="post" action="contact.html">
+                        <div class="form-group">
+                            <label>Username or Email</label>
+                            <input type="text" name="username" placeholder="Name or Email " required/>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Enter Your Password</label>
+                            <input type="email" name="email" placeholder="Password" required/>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="checkbox" name="shipping-option" id="account-option-1"/>&nbsp; <label for="account-option-1">Remember me</label>
+                        </div>
+
+                        <div class="form-group">
+                            <button class="theme-btn btn-style-one" type="submit" name="submit-form"><span class="btn-title">LOGIN</span></button>
+                        </div>
+
+                        <div class="form-group pass">
+                            <a href="#" class="psw">Lost your password?</a>
+                        </div>
+                    </form>
+                </div>
+                
+            </div>
+            
+            <div class="column col-lg-6 col-md-6 col-sm-12">
+                
+                
+                <div class="login-form register-form">
+                    <h2>Register</h2>
+                    
+                    <form method="post" action="contact.html">
+                        {/* <div class="form-group">
+                            <label>User Name</label>
+                            <input type="text" name="username" placeholder="Your Name" required/>
+                        </div> */}
+
+                        <div class="form-group">
+                            <label>Email Address</label>
+                            <input type="email" name="email" placeholder="Your Email" required/>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Your Password</label>
+                            <input type="password" name="password" placeholder="Password" required/>
+                        </div>
+                        
+                        <div class="form-group text-right">
+                            <button class="theme-btn btn-style-one" type="submit" name="submit-form"><span class="btn-title">Register</span></button>
+                        </div>
+                    </form>      
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section></div>
+  )
+}
+
+export default LoginForm

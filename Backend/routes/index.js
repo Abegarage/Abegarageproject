@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // Import the express module 
 const express = require('express');
 // Call the router method from express to create the router 
@@ -17,15 +16,3 @@ router.use(employeeRouter);
 router.use(loginRoutes);
 // Export the router
 module.exports = router; 
-=======
-//Import the express module
-const express = require("express");
-//call the router methode from express to create the router
-const router = express.Router();
-//Import the login routes
-const loginRoutes = require("./login.routes");
-//Add the login routes to the main router
-router.use(loginRoutes);
-//export the router
-module.exports = router;
->>>>>>> origin/merkeb
