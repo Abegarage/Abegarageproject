@@ -1,34 +1,33 @@
-import { useState } from 'react'
-// import reactLogo from './assets/main app images/loomain.png'
-// import logo from "./assets/main app images/logomain.png";
+import {Routes, Route} from 'react-router-dom'
 import image from "./assets/mainImage/logomain.png";
 import './App.css'
+import Home from './Markup/pages/Home'
+import Login from './Markup/pages/Login'
+import AddEmployee from './Markup/pages/Admin/AddEmployee'
+//import the css files
+import "./assets/templaet_assets/css/responsive.css"
+import "./assets/templaet_assets/css/style.css"
+import "./assets/templaet_assets/css/bootstrap.css"
+// import "./assets/templaet_assets/css/jquery-ui.css"
+// import "./assets/templaet_assets/css/owl.css"
+// import "./assets/templaet_assets/css/flaticon.css"
+// import "./assets/templaet_assets/css/jquery.mCustomScrollbar.min.css"
+// import "./assets/templaet_assets/css/font-awesome.min.css"
+import "./assets/style/custom.css"
+import Header from './Markup/components/Header/Header.jsx'
+import Footer from './Markup/components/Footer/Footer.jsx'
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={image} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={image} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/admin/add-employee" element={<AddEmployee />} />
+      </Routes>
+      <Footer />
     </>
   )
 }
