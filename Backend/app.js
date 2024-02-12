@@ -3,7 +3,7 @@ const express = require("express");
 // Import the dotenv module and call the config method to load the environment variables
 require("dotenv").config();
 // Import the sanitizer module
-// const sanitize = require('sanitize');
+const sanitize = require("sanitize");
 // Import the CORS module
 const cors = require("cors");
 // Set up the CORS options to allow requests from our front-end
@@ -19,34 +19,17 @@ const router = require("./routes");
 const app = express();
 // Add the CORS middleware
 app.use(cors(corsOptions));
+// app.use(cors());
 // Add the express.json middleware to the application
 app.use(express.json());
 // Add the sanitizer to the express middleware
-// app.use(sanitize.middleware);
+app.use(sanitize.middleware);
 // Add the routes to the application as middleware
 app.use(router);
 // Start the webserver
 app.listen(port, () => {
   console.log(`Server running on port: ${port}`);
 });
+
 // Export the webserver for use in the application
 module.exports = app;
-
-app.use(cors());
-const dbConnection = require("./config/dbConfig");
-
-//Set up the listener - Creating the webserver
-app.listen(port, () => {
-  console.log(`Server is listening on port ${port}`);
-});
-
-//Create the connection to the database
-async function connectToDatabase() {
-  try {
-    await dbConnection.getConnection();
-    console.log("Connected to the database!");
-  } catch (err) {
-    console.error("Error connecting to the database:", err);
-  }
-}
-connectToDatabase();
