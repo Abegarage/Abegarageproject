@@ -1,4 +1,5 @@
 // Import the query function from the db.config.js file 
+const { response } = require("../app");
 const conn = require("../config/dbConfig");
 // Import the bcrypt module 
 const bcrypt = require('bcrypt');
@@ -40,11 +41,13 @@ async function createEmployee(employee) {
     // construct to the employee object to return 
     createdEmployee = {
       employee_id: employee_id
-    }
+    };
   } catch (err) {
     console.log(err);
+    
   }
   // Return the employee object 
+  console.log(createdEmployee);
   return createdEmployee;
 }
 // A function to get employee by email

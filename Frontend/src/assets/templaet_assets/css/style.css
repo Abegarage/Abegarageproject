@@ -129,6 +129,7 @@ a{
 	text-decoration:none;
 	cursor:pointer;
 	color:#cb212a;
+	caret-color: lawngreen !important;
 }
 
 a:hover,

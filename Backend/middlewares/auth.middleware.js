@@ -15,6 +15,7 @@ const verifyToken = async (req, res, next) => {
       message: "No token provided!"
     });
   }
+ 
 
   jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
     if (err) {
@@ -24,7 +25,7 @@ const verifyToken = async (req, res, next) => {
       });
     }
     // console.log("Here is the decoded token");
-    // console.log(decoded);
+    console.log(decoded);
     req.employee_email = decoded.employee_email;
     next();
   });
@@ -43,7 +44,9 @@ const isAdmin = async (req, res, next) => {
     return res.status(403).send({
       status: "fail",
       error: "Not an Admin!"
+      
     });
+   
   }
 }
 

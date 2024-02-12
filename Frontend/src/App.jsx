@@ -16,6 +16,7 @@ import "./assets/templaet_assets/css/bootstrap.css"
 import "./assets/style/custom.css"
 import Header from './Markup/components/Header/Header.jsx'
 import Footer from './Markup/components/Footer/Footer.jsx'
+import Register from './Markup/Components/Register/Register.jsx';
 
 function App() {
   
@@ -26,6 +27,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/admin/add-employee" element={<AddEmployee />} />
+        <Route path="/register" element={<Register />} />
+
       </Routes>
       <Footer />
     </>
