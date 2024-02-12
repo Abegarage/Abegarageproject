@@ -13,7 +13,7 @@ async function logIn(employeeData) {
       employeeData.employee_email
       // employee_email
     );
-  console.log(employee);
+    console.log(employee);
     if (employee.length === 0) {
       returnData = {
         status: "fail",
