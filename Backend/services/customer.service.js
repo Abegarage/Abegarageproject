@@ -15,10 +15,12 @@ async function createCustomer(customer) {
   let createdCustomer = {};
   try {
     const query1 =
-      "INSERT INTO customer_identifier (customer_email, customer_phone_number) VALUES (?, ?)";
+      "INSERT INTO customer_identifier (customer_email, customer_phone_number, customer_hash) VALUES (?, ?, ?)";
     const rows = await conn.query(query1, [
+      
       customer.customer_email,
       customer.customer_phone_number,
+      customer.customer_hash
     ]);
     if (rows.affectedRows !== 1) {
       return false;

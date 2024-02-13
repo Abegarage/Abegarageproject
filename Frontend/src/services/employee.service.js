@@ -1,8 +1,5 @@
 // import from env
- 
 const api_url = import.meta.env.VITE_API_URL;
-
-
 // A function to send post request to create a new employee 
 const createEmployee = async (formData, loggedInEmployeeToken) => {
   const requestOptions = {
