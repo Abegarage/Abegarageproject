@@ -44,8 +44,16 @@ async function createCustomer(customer) {
   }
   return createdCustomer;
 }
+// A function to get all customer
+async function getAllCustomers() {
+  const query =
+    "SELECT * FROM customer_identifier INNER JOIN customer_info ON customer_identifier.customer_id = customer_info.customer_id ORDER BY customer_identifier.customer_id ASC limit 10";
+  const rows = await conn.query(query);
+  return rows;
+}
 
 module.exports = {
   createCustomer,
   checkIfCustomerExists,
+  getAllCustomers,
 };

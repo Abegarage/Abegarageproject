@@ -29,6 +29,23 @@ async function createCustomer(req, res, next) {
     }
   }
 }
+// Create the getAllCustomers controller
+async function getAllCustomers(req, res) {
+  // Call the getAllCustomers method from the customers service
+  const customer = await customerService.getAllCustomers();
+  // console.log(customer);
+  if (!customer) {
+    res.status(400).json({
+      error: "Failed to get all customers!",
+    });
+  } else {
+    res.status(200).json({
+      status: "success",
+      data: customer,
+    });
+  }
+}
 module.exports = {
   createCustomer,
+  getAllCustomers,
 };
