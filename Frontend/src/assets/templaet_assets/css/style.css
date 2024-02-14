@@ -129,6 +129,7 @@ a{
 	text-decoration:none;
 	cursor:pointer;
 	color:#cb212a;
+	caret-color: lawngreen !important;
 }
 
 a:hover,
@@ -683,7 +684,7 @@ img{
 	color:#3f4d50;
 	font-weight:400;
 }
-
+/* welcome  */
 .main-header .info-box li strong{
 	display: block;
 	font-size: 16px;
