@@ -3,9 +3,10 @@ import React from 'react'
 function AdminMenu() {
   return (
     <div>
-        <div className='admin-menu '>
-            <h2>Admin Menu</h2>
+      <br/>
         
+        <div className='admin-menu sec-title text-center'>
+            <h2>Admin Menu</h2>
         </div>
         <div className='list-group ' >
          <a href="/admin" className='list-group-item ' >Dashboard</a>

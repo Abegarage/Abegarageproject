@@ -15,10 +15,12 @@ async function createCustomer(customer) {
   let createdCustomer = {};
   try {
     const query1 =
-      "INSERT INTO customer_identifier (customer_email, customer_phone_number) VALUES (?, ?)";
+      "INSERT INTO customer_identifier (customer_email, customer_phone_number, customer_hash) VALUES (?, ?, ?)";
     const rows = await conn.query(query1, [
+      
       customer.customer_email,
       customer.customer_phone_number,
+      customer.customer_hash
     ]);
     if (rows.affectedRows !== 1) {
       return false;
@@ -44,8 +46,16 @@ async function createCustomer(customer) {
   }
   return createdCustomer;
 }
+// A function to get all customer
+async function getAllCustomers() {
+  const query =
+    "SELECT * FROM customer_identifier INNER JOIN customer_info ON customer_identifier.customer_id = customer_info.customer_id ORDER BY customer_identifier.customer_id ASC limit 10";
+  const rows = await conn.query(query);
+  return rows;
+}
 
 module.exports = {
   createCustomer,
   checkIfCustomerExists,
+  getAllCustomers,
 };
