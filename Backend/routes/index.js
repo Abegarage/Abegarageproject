@@ -19,4 +19,16 @@ router.use(loginRoutes);
 // Add the Customer routes to the main router
 router.use(customerRouter);
 // Export the router
+
+//Import the services routes  
+const serviceRoutes = require("./service.routes");
+router.use(serviceRoutes);
+
+//Import the vehicle routes
+const vehicleRouter = require("./vehicle.routes");
+router.use(vehicleRouter);
+
+//Import the order routes
+const orderRouter = require("./order.routes");
+router.use(orderRouter);
 module.exports = router;
