@@ -10,7 +10,7 @@ async function checkIfCustomerExists(email) {
   }
   return false;
 }
-
+// A function to add a customer
 async function createCustomer(customer) {
   let createdCustomer = {};
   try {
@@ -38,7 +38,7 @@ async function createCustomer(customer) {
     createdCustomer = {
       customer_id: customer_id,
     };
-    console.log(customer);
+    // console.log(customer);
   } catch (err) {
     console.log(err);
   }
@@ -52,8 +52,52 @@ async function getAllCustomers() {
   return rows;
 }
 
+// A function to edit customer
+async function updateCustomer(updatedCustomer) {
+  try {
+    const queryUpdate1 =
+      "UPDATE customer_identifier SET customer_phone_number = ? WHERE customer_id = ?";
+    const rowsUpdated1 = await conn.query(queryUpdate1, [
+      updatedCustomer.customer_phone_number,
+      updatedCustomer.customer_id,
+    ]);
+    // const customer_id = rowsUpdated1.insertId;
+    const queryUpdate2 =
+      "UPDATE customer_info SET customer_first_name = ?, customer_last_name = ?, active_customer_status = ? WHERE customer_id = ?";
+    const rowsUpdated2 = await conn.query(queryUpdate2, [
+      updatedCustomer.customer_first_name,
+      updatedCustomer.customer_last_name,
+      updatedCustomer.active_customer_status,
+      updatedCustomer.customer_id,
+    ]);
+    return rowsUpdated2;
+  } catch (err) {
+    console.log(err);
+  }
+}
+// A function to delete customer
+async function deleteCustomer(deleteCustomer) {
+  try {
+    const queryDelete1 =
+      "DELETE FROM customer_identifier WHERE customer_id = ?";
+    const rowsDeleted1 = await conn.query(queryDelete1, [
+      deleteCustomer.customer_id,
+    ]);
+
+    const queryDelete2 = "DELETE FROM customer_info WHERE customer_id = ?";
+    const rowsDeleted12 = await conn.query(queryDelete2, [
+      deleteCustomer.customer_id,
+    ]);
+    return rowsDeleted12;
+  } catch (err) {
+    console.log(err);
+  }
+}
+
 module.exports = {
   createCustomer,
   checkIfCustomerExists,
   getAllCustomers,
+  updateCustomer,
+  deleteCustomer,
 };

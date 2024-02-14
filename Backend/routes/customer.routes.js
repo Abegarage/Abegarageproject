@@ -7,8 +7,12 @@ const customerController = require("../controllers/customer.controller");
 // Import middleware
 const authMiddleware = require("../middlewares/auth.middleware");
 // Create a route to handle the add customer request on post
-router.post("/api/customer", customerController.createCustomer);
+router.post("/api/customers", customerController.createCustomer);
 // Create a route to handle the get all customer request on get
 router.get("/api/customers", customerController.getAllCustomers);
+// Create a route to edit customer request on put
+router.put("/api/customers", customerController.updateCustomer);
+// Create a route to delete customer request on delete
+router.delete("/api/customers", customerController.deleteCustomer);
 
 module.exports = router;

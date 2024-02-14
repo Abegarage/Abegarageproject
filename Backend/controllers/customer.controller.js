@@ -12,6 +12,7 @@ async function createCustomer(req, res, next) {
     try {
       const customerData = req.body;
       const customer = await customerService.createCustomer(customerData);
+      // console.log(customerData);
       if (!customer) {
         res.status(400).json({
           error: "Failed to add the Customer!",
@@ -33,7 +34,6 @@ async function createCustomer(req, res, next) {
 async function getAllCustomers(req, res) {
   // Call the getAllCustomers method from the customers service
   const customer = await customerService.getAllCustomers();
-  // console.log(customer);
   if (!customer) {
     res.status(400).json({
       error: "Failed to get all customers!",
@@ -45,7 +45,45 @@ async function getAllCustomers(req, res) {
     });
   }
 }
+// Create the updateCustomer controller
+async function updateCustomer(req, res) {
+  // Call the updateCustomer method from the customers service
+  const updatedCustomerData = req.body;
+  const updatedCustomer = await customerService.updateCustomer(
+    updatedCustomerData
+  );
+  if (!updatedCustomer) {
+    res.status(400).json({
+      error: "Failed to edit customer!",
+    });
+  } else {
+    res.status(200).json({
+      status: "success",
+      data: updatedCustomerData,
+    });
+  }
+}
+// Create the deleteCustomer controller
+async function deleteCustomer(req, res) {
+  // Call the deleteCustomer method from the customers service
+  const customerIdToDelete = req.body;
+  const deleteCustomer = await customerService.deleteCustomer(
+    customerIdToDelete
+  );
+  if (!deleteCustomer) {
+    res.status(400).json({
+      error: "Failed to delete customer!",
+    });
+  } else {
+    res.status(200).json({
+      status: "success",
+      data: customerIdToDelete,
+    });
+  }
+}
 module.exports = {
   createCustomer,
   getAllCustomers,
+  updateCustomer,
+  deleteCustomer,
 };
